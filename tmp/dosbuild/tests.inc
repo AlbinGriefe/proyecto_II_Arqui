@@ -1,0 +1,1 @@
+EXTRN EjecutarPruebas:NEAR

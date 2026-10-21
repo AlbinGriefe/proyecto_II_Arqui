@@ -1,0 +1,10 @@
+
+ Start  Stop   Length Name               Class
+
+ 00000H 01287H 01288H _TEXT              CODE
+ 01290H 02F0CH 01C7DH _DATA              DATA
+ 02F10H 0310FH 00200H STACK              STACK
+ 03110H 12B0FH 0FA00H SCREEN             SCREEN
+
+Program entry point at 0000:0000
+

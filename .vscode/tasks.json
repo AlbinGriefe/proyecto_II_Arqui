@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "TASM: construir y verificar",
+      "type": "shell",
+      "command": "${workspaceFolder}\\build.ps1",
+      "args": ["-Test"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "group": {"kind": "build", "isDefault": true},
+      "problemMatcher": []
+    },
+    {
+      "label": "TASM: ejecutar juego",
+      "type": "shell",
+      "command": "${workspaceFolder}\\run.ps1",
+      "options": {"cwd": "${workspaceFolder}"},
+      "dependsOn": "TASM: construir y verificar",
+      "problemMatcher": []
+    }
+  ]
+}

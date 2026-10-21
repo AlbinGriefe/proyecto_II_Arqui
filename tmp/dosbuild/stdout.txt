@@ -1,0 +1,20 @@
+DOSBox version 0.74-3
+Copyright 2002-2019 DOSBox Team, published under GNU GPL.
+---
+CONFIG:Loading primary settings from config file C:\Users\jcaba\OneDrive\Desktop\Stuff\U\6to cuatri\Arqui IItry\Proyecto_II_Arqui\tmp\dosbuild\build.conf
+
+Windows dpi/blurry apps scaling detected! The screen might be too large or not
+show properly, please see the DOSBox options file (fullresolution) for details.
+
+MIXER:No Sound Mode Selected.
+MIDI:Opened device:win32
+SHELL:Redirect output to BUILD.LOG
+SHELL:Redirect output to BUILD.LOG
+SHELL:Redirect output to BUILD.LOG
+SHELL:Redirect output to BUILD.LOG
+SHELL:Redirect output to BUILD.LOG
+SHELL:Redirect output to BUILD.LOG
+SHELL:Redirect output to BUILD.LOG
+SHELL:Redirect output to BUILD.LOG
+SHELL:Redirect output to TESTS.TXT
+SHELL:Redirect output to SUCCESS.OK

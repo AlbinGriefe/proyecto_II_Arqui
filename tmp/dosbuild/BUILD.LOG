@@ -1,0 +1,57 @@
+Turbo Assembler  Version 3.2  Copyright (c) 1988, 1992 Borland International
+
+Assembling file:   main.asm
+Error messages:    None
+Warning messages:  None
+Passes:            2
+Remaining memory:  458k
+
+Turbo Assembler  Version 3.2  Copyright (c) 1988, 1992 Borland International
+
+Assembling file:   data.asm
+Error messages:    None
+Warning messages:  None
+Passes:            1
+Remaining memory:  446k
+
+Turbo Assembler  Version 3.2  Copyright (c) 1988, 1992 Borland International
+
+Assembling file:   video.asm
+Error messages:    None
+Warning messages:  None
+Passes:            2
+Remaining memory:  458k
+
+Turbo Assembler  Version 3.2  Copyright (c) 1988, 1992 Borland International
+
+Assembling file:   input.asm
+Error messages:    None
+Warning messages:  None
+Passes:            2
+Remaining memory:  461k
+
+Turbo Assembler  Version 3.2  Copyright (c) 1988, 1992 Borland International
+
+Assembling file:   game.asm
+Error messages:    None
+Warning messages:  None
+Passes:            2
+Remaining memory:  455k
+
+Turbo Assembler  Version 3.2  Copyright (c) 1988, 1992 Borland International
+
+Assembling file:   ui.asm
+Error messages:    None
+Warning messages:  None
+Passes:            2
+Remaining memory:  446k
+
+Turbo Assembler  Version 3.2  Copyright (c) 1988, 1992 Borland International
+
+Assembling file:   tests.asm
+Error messages:    None
+Warning messages:  None
+Passes:            2
+Remaining memory:  451k
+
+Turbo Link  Version 3.01 Copyright (c) 1987, 1990 Borland International

@@ -1,0 +1,3 @@
+Pruebas del ASM real: evaluador, turnos, teclado y PRNG.
+Comprobaciones: 11313 Fallos: 0
+PASS: todas las comprobaciones superadas.

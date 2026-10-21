@@ -1,0 +1,22 @@
+{
+  "nombre": "Paleta provisional VGA16 del proyecto",
+  "rango_dac": 63,
+  "colores": [
+    {"indice": 0, "nombre": "Transparente / negro", "rgb": [0, 0, 0]},
+    {"indice": 1, "nombre": "Fondo", "rgb": [4, 6, 12]},
+    {"indice": 2, "nombre": "Panel", "rgb": [8, 12, 20]},
+    {"indice": 3, "nombre": "Borde", "rgb": [18, 24, 32]},
+    {"indice": 4, "nombre": "Rojo", "rgb": [58, 17, 20]},
+    {"indice": 5, "nombre": "Verde", "rgb": [17, 48, 30]},
+    {"indice": 6, "nombre": "Azul", "rgb": [18, 32, 60]},
+    {"indice": 7, "nombre": "Texto suave", "rgb": [42, 47, 54]},
+    {"indice": 8, "nombre": "Morado", "rgb": [44, 23, 58]},
+    {"indice": 9, "nombre": "Naranja", "rgb": [63, 34, 12]},
+    {"indice": 10, "nombre": "Acierto exacto", "rgb": [27, 61, 41]},
+    {"indice": 11, "nombre": "Cian", "rgb": [15, 51, 57]},
+    {"indice": 12, "nombre": "Rosa", "rgb": [60, 28, 44]},
+    {"indice": 13, "nombre": "Derrota", "rgb": [63, 23, 27]},
+    {"indice": 14, "nombre": "Seleccion / parcial", "rgb": [63, 52, 22]},
+    {"indice": 15, "nombre": "Texto principal", "rgb": [60, 62, 63]}
+  ]
+}
