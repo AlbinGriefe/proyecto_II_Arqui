@@ -10,6 +10,12 @@ uiFila dw 0
 uiCol dw 0
 uiX dw 0
 uiY dw 0
+uiFrame db 0
+uiBase dw 0
+uiExactX dw 0
+uiPartialX dw 0
+uiPaso dw 0
+uiEjemplo db 0,1,2,3,0,2,1,3
 .CODE
 ; E: estado y datos del juego. S: framebuffer completo. Registros preservados.
 DibujarPantalla PROC NEAR
@@ -21,6 +27,7 @@ DibujarPantalla PROC NEAR
     push di
     push bp
     mov al, 1
+    mov uiFrame, 0
     call LimpiarPantalla
     xor ax, ax
     xor dx, dx
@@ -90,25 +97,23 @@ dp_nivtexto:
     inc di
     cmp di, 3
     jb dp_nivop
+    xor bx, bx
+    mov bl, nivel
+    shl bx, 1
+    mov si, nivelDescPtrs[bx]
+    mov ax, 24
+    mov dx, 148
+    mov bl, 7
+    call DibujarTexto
     TEXTO txtEsc, 16, 190, 7
     jmp dp_fin
 dp_ayuda:
-    TEXTO txtHelp, 16, 30, 14
-    TEXTO txtRules1, 8, 50, 7
-    TEXTO txtRules2, 8, 64, 7
-    TEXTO txtRules3, 8, 78, 7
-    TEXTO txtRules4, 8, 92, 7
-    TEXTO txtRules5, 8, 106, 7
-    TEXTO txtRules6, 8, 120, 7
-    TEXTO txtRules7, 8, 134, 7
-    TEXTO txtRules8, 8, 148, 7
-    TEXTO txtRules9, 8, 162, 10
-    TEXTO txtEsc, 8, 190, 7
+    call DibujarAyuda
     jmp dp_fin
 dp_creditos:
     TEXTO txtCredits, 16, 30, 14
     TEXTO txtTeam, 16, 64, 7
-    TEXTO txtPending, 16, 88, 7
+    TEXTO txtCreditDesign, 16, 88, 7
     TEXTO txtEsc, 16, 190, 7
 dp_fin:
     call DibujarAnimacion
@@ -148,8 +153,14 @@ DibujarTablero PROC NEAR
     mov dx, 6
     mov bl, 14
     call DibujarTexto
-    TEXTO txtBoard, 8, 24, 7
+    cmp estado, ST_SECRET
+    jne dt_historial
+    call DibujarManual
+    jmp dt_panel
+dt_historial:
+    call DibujarCabeceraHistorial
     call DibujarHistorial
+dt_panel:
     TEXTO txtCatalog, 208, 24, 7
     call DibujarCatalogo
     TEXTO txtGuess, 208, 94, 7
@@ -173,33 +184,25 @@ dt_turno:
     mov ax, 280
     mov dx, 144
     call DibujarNumero
-    cmp estado, ST_SECRET
-    jne dt_resultado
-    TEXTO txtManual, 8, 44, 14
-    TEXTO txtManual2, 8, 64, 7
-    TEXTO txtManual3, 8, 84, 7
 dt_resultado:
     cmp estado, ST_WIN
     je dt_gano
     cmp estado, ST_LOSE
     jne dt_mensaje
-    call LimpiarTituloTablero
-    TEXTO txtLost, 8, 24, 13
+    TEXTO txtAgainLost, 8, 191, 13
     jmp dt_revelar
 dt_gano:
-    call LimpiarTituloTablero
-    TEXTO txtWon, 8, 24, 10
+    TEXTO txtAgain, 8, 191, 10
 dt_revelar:
-    TEXTO txtAgain, 8, 190, 14
     TEXTO txtSecret, 208, 158, 7
     xor di, di
-    mov ax, 208
-    mov dx, 170
+    mov uiX, 208
+    mov uiY, 172
+    mov uiFrame, 0
 dt_codigo:
-    mov cl, secreto[di]
-    inc cl
-    call Digito
-    add ax, 16
+    mov al, secreto[di]
+    call FichaEnCoordenada
+    add uiX, 20
     inc di
     xor cx, cx
     mov cl, nFichas
@@ -226,27 +229,82 @@ dt_fin:
     ret
 DibujarTablero ENDP
 
-; E: ninguna. S: borra encabezado anterior antes de escribir el resultado.
-; Preserva registros; evita superponer glifos transparentes sobre el titulo.
-LimpiarTituloTablero PROC NEAR
+; E: nivel. S: cabeceras dentro del panel A. Registros preservados.
+DibujarCabeceraHistorial PROC NEAR
+    cmp nivel, 0
+    jne dch_simple
+    TEXTO txtBoard, 18, 24, 7
+    TEXTO txtMiniT, 86, 24, 10
+    TEXTO txtMiniV, 94, 24, 14
+    TEXTO txtBoard, 116, 24, 7
+    TEXTO txtMiniT, 184, 24, 10
+    TEXTO txtMiniV, 192, 24, 14
+    ret
+dch_simple:
+    TEXTO txtBoard, 32, 22, 7
+    TEXTO txtMiniT, 156, 22, 10
+    TEXTO txtMiniV, 180, 22, 14
+    ret
+DibujarCabeceraHistorial ENDP
+
+; E: editor manual. S: ayuda acotada al panel izquierdo. Registros preservados.
+DibujarManual PROC NEAR
+    TEXTO txtManual, 8, 32, 14
+    TEXTO txtManual2, 8, 54, 7
+    TEXTO txtManual3, 8, 66, 7
+    TEXTO txtManual4, 8, 78, 7
+    TEXTO txtManual5, 8, 110, 15
+    TEXTO txtManual6, 8, 132, 10
+    ret
+DibujarManual ENDP
+
+; E: ninguna. S: ejemplo 0123/0213 con dos exactos y dos parciales.
+; Usa datos privados de interfaz; nunca expone el secreto de una partida.
+DibujarAyuda PROC NEAR
     push ax
     push bx
     push cx
     push dx
-    push bp
-    mov ax, 4
-    mov dx, 22
-    mov cx, 196
-    mov bp, 12
-    mov bl, 2
-    call Rectangulo
-    pop bp
+    push si
+    push di
+    TEXTO txtHelp, 8, 26, 14
+    TEXTO txtRules1, 8, 40, 7
+    TEXTO txtCodeLabel, 8, 54, 15
+    TEXTO txtExampleLabel, 144, 54, 15
+    xor di, di
+    mov uiX, 8
+    mov uiY, 66
+    mov uiFrame, 0
+day_ficha:
+    mov al, uiEjemplo[di]
+    call FichaEnCoordenada
+    add uiX, 20
+    inc di
+    cmp di, 4
+    jne day_limite
+    mov uiX, 144
+day_limite:
+    cmp di, 8
+    jb day_ficha
+    TEXTO txtScoreExample, 224, 70, 10
+    TEXTO txtScorePartial, 280, 70, 14
+    TEXTO txtRules2, 8, 88, 10
+    TEXTO txtRules3, 8, 100, 14
+    TEXTO txtRules9, 8, 112, 7
+    TEXTO txtRules4, 8, 128, 7
+    TEXTO txtRules5, 8, 140, 7
+    TEXTO txtRules6, 8, 152, 7
+    TEXTO txtRules7, 8, 166, 7
+    TEXTO txtRules8, 8, 178, 7
+    TEXTO txtHelpFooter, 8, 191, 7
+    pop di
+    pop si
     pop dx
     pop cx
     pop bx
     pop ax
     ret
-LimpiarTituloTablero ENDP
+DibujarAyuda ENDP
 
 ; E: CL=0..9, AX/DX=coordenadas, BL=color. S: un digito. Preserva registros.
 Digito PROC NEAR
@@ -261,8 +319,9 @@ Digito PROC NEAR
     ret
 Digito ENDP
 
-; E: historial y conteos. S: doce filas de 13px con identificadores, T y V.
-; Preserva registros. Representacion compacta provisional, sin ocultar intentos.
+; E: historial y conteos. S: todos los intentos con sprites 16x16, T y V.
+; Facil: dos columnas de seis. Normal/Dificil: diez filas de 16 pixeles.
+; Preserva registros. No hay paginacion, escalado ni filas ocultas.
 DibujarHistorial PROC NEAR
     push ax
     push bx
@@ -271,18 +330,20 @@ DibujarHistorial PROC NEAR
     push si
     push di
     mov uiFila, 0
-    mov uiY, 38
+    mov uiFrame, 0
 dh_fila:
     xor cx, cx
     mov cl, maxTurnos
     cmp uiFila, cx
     jae dh_fin
+    call CoordenadaHistorial
     mov cx, uiFila
     inc cl
-    mov ax, 8
+    mov ax, uiBase
     mov dx, uiY
+    add dx, 5
     mov bl, 7
-    call DibujarNumero
+    call DibujarNumeroMini
     xor cx, cx
     mov cl, usados
     cmp uiFila, cx
@@ -293,13 +354,11 @@ dh_fila:
     shl bx, 1
     add si, bx
     mov uiCol, 0
-    mov ax, 32
 dh_col:
-    mov cl, historial[si]
-    inc cl
-    mov bl, 15
-    call Digito
-    add ax, 20
+    mov al, historial[si]
+    call FichaEnCoordenada
+    mov ax, uiPaso
+    add uiX, ax
     inc si
     inc uiCol
     xor cx, cx
@@ -308,15 +367,16 @@ dh_col:
     jb dh_col
     mov si, uiFila
     mov cl, torosHist[si]
-    mov ax, 152
+    mov ax, uiExactX
+    mov dx, uiY
+    add dx, 6
     mov bl, 10
-    call Digito
+    call DibujarDigitoMini
     mov cl, vacasHist[si]
-    mov ax, 176
+    mov ax, uiPartialX
     mov bl, 14
-    call Digito
+    call DibujarDigitoMini
 dh_siguiente:
-    add uiY, 13
     inc uiFila
     jmp dh_fila
 dh_fin:
@@ -328,6 +388,49 @@ dh_fin:
     pop ax
     ret
 DibujarHistorial ENDP
+
+; E: uiFila/nivel. S: origen, paso, etiquetas y conteos de esa fila.
+; Preserva registros. Cada cuadro 16x16 queda dentro de (4,22)-(199,189).
+CoordenadaHistorial PROC NEAR
+    push ax
+    push bx
+    push dx
+    mov ax, uiFila
+    mov uiBase, 8
+    mov uiX, 32
+    mov uiPaso, 20
+    mov uiExactX, 158
+    mov uiPartialX, 182
+    cmp nivel, 0
+    je coh_facil
+    mov bx, 16
+    mul bx
+    add ax, 30
+    mov uiY, ax
+    jmp coh_fin
+coh_facil:
+    mov uiX, 18
+    mov uiPaso, 16
+    mov uiExactX, 88
+    mov uiPartialX, 96
+    cmp ax, 6
+    jb coh_izquierda
+    sub ax, 6
+    mov uiBase, 106
+    mov uiX, 116
+    mov uiExactX, 186
+    mov uiPartialX, 194
+coh_izquierda:
+    mov bx, 24
+    mul bx
+    add ax, 38
+    mov uiY, ax
+coh_fin:
+    pop dx
+    pop bx
+    pop ax
+    ret
+CoordenadaHistorial ENDP
 
 ; E: AL=tipo 0..7, AX ya no es coordenada; uiX/uiY=destino.
 ; S: sprite 16x16, dos cuadros contiguos por ficha. Preserva registros.
@@ -343,7 +446,7 @@ FichaEnCoordenada PROC NEAR
     shl ax, cl
     mov si, OFFSET sprites
     add si, ax
-    cmp cuadro, 0
+    cmp uiFrame, 0
     je fec_cuadro
     add si, 256
 fec_cuadro:
@@ -369,6 +472,7 @@ DibujarCatalogo PROC NEAR
     push dx
     push di
     xor di, di
+    mov uiFrame, 0
     mov uiX, 208
     mov uiY, 36
 dc_ficha:
@@ -414,6 +518,19 @@ DibujarPropuesta PROC NEAR
     mov uiX, 208
     mov uiY, 108
 dpr_celda:
+    mov uiFrame, 0
+    cmp estado, ST_GAME
+    je dpr_animable
+    cmp estado, ST_SECRET
+    jne dpr_estatico
+dpr_animable:
+    xor ax, ax
+    mov al, activo
+    cmp di, ax
+    jne dpr_estatico
+    mov al, cuadro
+    mov uiFrame, al
+dpr_estatico:
     mov ax, uiX
     mov dx, uiY
     dec ax
@@ -497,8 +614,8 @@ da_mascota:
     mov bl, 1
     jmp da_pintar
 da_final:
-    mov ax, 286
-    mov dx, 165
+    mov ax, 292
+    mov dx, 154
     mov si, OFFSET finale
     cmp estado, ST_WIN
     je da_colorfinal

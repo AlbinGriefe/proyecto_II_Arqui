@@ -1,0 +1,117 @@
+{
+  "colores_paleta": 256,
+  "colores_ui_preservados": 16,
+  "fichas_activas": 8,
+  "cuadros_distintos_por_ficha": 2,
+  "bytes_sprites_asm": 5632,
+  "sprites": [
+    {
+      "archivo": "01_bollo_glaseado.png",
+      "id_juego": 0,
+      "tecla": 1,
+      "sha256_original": "0993a35d2b51cade34f3a994c71eab032759d99a9f1d5a4d18a6d7aea53c872a",
+      "pixeles_opacos": 187,
+      "colores_vga": 52,
+      "error_rgb_rms": 3.054
+    },
+    {
+      "archivo": "02_cupcake_crema.png",
+      "id_juego": 1,
+      "tecla": 2,
+      "sha256_original": "d7c66e88f39ba997b51e0a1c6e15cecdadfe7af3a0abd74a8bd1ac0dd4a565b4",
+      "pixeles_opacos": 193,
+      "colores_vga": 45,
+      "error_rgb_rms": 2.881
+    },
+    {
+      "archivo": "03_waffle.png",
+      "id_juego": 2,
+      "tecla": 3,
+      "sha256_original": "5e6933c3757b687a8873e532e7c19524c6f717f823e62d61f802cf25dd9f09d7",
+      "pixeles_opacos": 252,
+      "colores_vga": 45,
+      "error_rgb_rms": 2.948
+    },
+    {
+      "archivo": "04_dona_glaseada.png",
+      "id_juego": 3,
+      "tecla": 4,
+      "sha256_original": "681bc764c0d815f838282a24363de3ffbdea7d2e72f15aa01ba35e9596098ab5",
+      "pixeles_opacos": 193,
+      "colores_vga": 39,
+      "error_rgb_rms": 2.699
+    },
+    {
+      "archivo": "05_pretzel.png",
+      "id_juego": 4,
+      "tecla": 5,
+      "sha256_original": "b6ee05840f076f18cbef082d5cb18ff71ee20cc80d5e14215543d9303b0de112",
+      "pixeles_opacos": 172,
+      "colores_vga": 42,
+      "error_rgb_rms": 2.933
+    },
+    {
+      "archivo": "06_tarta_frutos_rojos.png",
+      "id_juego": 5,
+      "tecla": 6,
+      "sha256_original": "95d456ee70cc28bfbb58ca16fbf1bf54ecbdb47b97a87cb9d3972e32daece136",
+      "pixeles_opacos": 210,
+      "colores_vga": 65,
+      "error_rgb_rms": 2.939
+    },
+    {
+      "archivo": "07_rebanada_pastel.png",
+      "id_juego": 6,
+      "tecla": 7,
+      "sha256_original": "54ac81039cb04e1682512916493fb619c8de3b5b5a52e8237b3d3c18c9caf690",
+      "pixeles_opacos": 159,
+      "colores_vga": 42,
+      "error_rgb_rms": 2.877
+    },
+    {
+      "archivo": "08_muffin_chocolate.png",
+      "id_juego": 7,
+      "tecla": 8,
+      "sha256_original": "861a40ce589c2bac88b33fe9602c4add0cc894ee0d4bfbd3840f991bc63f0247",
+      "pixeles_opacos": 189,
+      "colores_vga": 44,
+      "error_rgb_rms": 3.181
+    },
+    {
+      "archivo": "09_pudin_caramelo.png",
+      "id_juego": null,
+      "tecla": null,
+      "sha256_original": "5a988108b9e5ac8fabd8e40d8ab196be7b28c90ebbe4118ba002ee1aad0a44e7",
+      "pixeles_opacos": 190,
+      "colores_vga": 41,
+      "error_rgb_rms": 2.745
+    },
+    {
+      "archivo": "10_rosquilla_crema.png",
+      "id_juego": null,
+      "tecla": null,
+      "sha256_original": "667b468650678808e5667bc6641fecbb47cfba8ad7b00cf0ae606b9652a92dcf",
+      "pixeles_opacos": 193,
+      "colores_vga": 39,
+      "error_rgb_rms": 3.056
+    },
+    {
+      "archivo": "11_dulce_redondo.png",
+      "id_juego": null,
+      "tecla": null,
+      "sha256_original": "df9d33f11cbbea2a6e4b8a42cfc8e1659728ee377314edb7abe367e1c521a044",
+      "pixeles_opacos": 193,
+      "colores_vga": 49,
+      "error_rgb_rms": 3.076
+    },
+    {
+      "archivo": "12_rollo_canela.png",
+      "id_juego": null,
+      "tecla": null,
+      "sha256_original": "bb9475c9ea5261d1f7a61aa1544bc8e4f6efa127859518aaef404f836da6028a",
+      "pixeles_opacos": 189,
+      "colores_vga": 63,
+      "error_rgb_rms": 3.048
+    }
+  ]
+}

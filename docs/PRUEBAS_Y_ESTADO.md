@@ -1,6 +1,8 @@
 # Pruebas y estado del avance
 
-Verificación realizada el 20 de octubre de 2026 UTC con DOSBox 0.74-3, Turbo Assembler 3.2 y Turbo Link 3.01 ya instalados en el equipo. El archivo `bin/BUILD.LOG` conserva el resultado del ensamblado de cada módulo. `bin/TESTS.TXT` conserva el resultado del ejecutable DOS, no de una reimplementación en Python.
+**Estado vigente:** 12.153 comprobaciones ASM y siete pruebas Python superadas. La revisión posterior de animaciones, historial y teclado BIOS está en [AVANCE_GRAFICO.md](AVANCE_GRAFICO.md). Las secciones inferiores conservan también la evidencia histórica de los avances anteriores.
+
+Verificación inicial del 20 de octubre; integración de dulces verificada el 2 de noviembre de 2026 (fecha local) con DOSBox 0.74-3, Turbo Assembler 3.2 y Turbo Link 3.01 ya instalados en el equipo. El archivo `bin/BUILD.LOG` conserva el resultado del ensamblado de cada módulo. `bin/TESTS.TXT` conserva el resultado del ejecutable DOS, no de una reimplementación en Python.
 
 ## Cómo reproducir
 
@@ -14,11 +16,11 @@ Resultado verificado del conjunto actual:
 
 ```text
 Pruebas del ASM real: evaluador, turnos, teclado y PRNG.
-Comprobaciones: 11313 Fallos: 0
+Comprobaciones: 12081 Fallos: 0
 PASS: todas las comprobaciones superadas.
 ```
 
-Los siete módulos ensamblaron sin errores ni advertencias y TLINK completó el enlace. Se revisó el mapa de segmentos y el tamaño de los procedimientos: hay 45 procedimientos; ninguno supera 200 líneas, contando desde PROC hasta ENDP.
+Los siete módulos ensamblaron sin errores ni advertencias y TLINK completó el enlace. Se revisó el mapa de segmentos y el tamaño de los procedimientos: hay 46 procedimientos; ninguno supera 200 líneas, contando desde PROC hasta ENDP.
 
 ## Cobertura
 
@@ -36,7 +38,7 @@ Los siete módulos ensamblaron sin errores ni advertencias y TLINK completó el 
 | Límites | Un sprite que rebasa el borde derecho se rechaza con CF. | Correcto. |
 | Pantallas | Presentación, menú, secreto, partida, victoria, derrota, dificultad, instrucciones y créditos. | Rutas de estado y dibujo ejecutadas en VGA. |
 | Salida gráfica | Después de las pruebas, INT 10h informa el modo original. | Correcto. |
-| Conversión PNG | Alfa, colores exactos, orden por filas, negro opaco y equivalencia INC/TXT. | Dos pruebas Python superadas. |
+| Conversión PNG | Alfa, colores exactos, orden por filas, negro opaco y equivalencia INC/TXT. | Cinco pruebas Python superadas en el conjunto completo. |
 
 ### Casos del evaluador
 
@@ -57,11 +59,11 @@ El conjunto no agota todas las combinaciones posibles del juego. Comprueba los c
 
 ## Revisión visual realizada
 
-El modo `/T` usa las rutinas gráficas reales, presenta el framebuffer en A000h y guarda seis capturas de 64.000 bytes en `tmp/dosbuild`: presentación, menú, partida, Difícil, victoria y derrota. Esas capturas se convirtieron temporalmente a imágenes con la misma paleta para inspeccionar el contenido. Se corrigió la superposición del encabezado de resultado y se comprobó la visibilidad simultánea de los 12 intentos de Fácil.
+El modo `/T` usa las rutinas gráficas reales, presenta el framebuffer en A000h y guarda siete capturas de 64.000 bytes en `tmp/dosbuild`: presentación, menú, partida, Difícil A/B, victoria y derrota. Esas capturas se convirtieron temporalmente a imágenes con la misma paleta para inspeccionar el contenido. Se corrigió la superposición del encabezado de resultado y se comprobó la visibilidad simultánea de los 12 intentos de Fácil.
 
 Las capturas son diagnósticos de desarrollo, no assets del juego ni evidencia de aprobación por el docente. La navegación automatizada llama al mismo procesador de teclas con códigos BIOS; no equivale a verificar físicamente todas las teclas en una sesión interactiva. El acceso al control de ventanas no estuvo disponible en esta sesión. Queda pendiente la revisión manual en DOSBox, especialmente animación percibida, teclado numérico, cambios rápidos y posibles desgarros de imagen.
 
-## Revisión manual recomendada antes de integrar assets
+## Revisión manual recomendada después de integrar assets
 
 1. Ejecutar `run.ps1`, pasar de la presentación al menú y recorrer sus cinco opciones.
 2. Probar Fácil, Normal y Difícil: N, C y turnos deben ser 4/6/12, 4/6/10 y 5/8/10.
@@ -73,7 +75,7 @@ Las capturas son diagnósticos de desarrollo, no assets del juego ni evidencia d
 ## Pruebas de las herramientas
 
 ```powershell
-python -m unittest discover -s herramientas -p test_conversion.py
+python -m unittest discover -s herramientas -p 'test_*.py' -v
 ```
 
 Puede usarse el intérprete alternativo del README. La prueba crea sus archivos temporales bajo `tmp` del proyecto y los elimina al terminar. El ejecutable del juego no depende de Python.
@@ -85,9 +87,17 @@ Puede usarse el intérprete alternativo del README. La prueba crea sus archivos 
 | RF-01/RF-03 | Presentación y ayuda existentes; nombres, temática y explicación gráfica final pendientes. |
 | RF-09 y maqueta | Todos los intentos visibles mediante números; diseño con sprites y conflicto de las 12 filas pendientes. |
 | RG-04/RG-05 y RF-12 | Dibujante y cuadros de prueba funcionan; deben sustituirse por diseños originales definitivos y revisar que las animaciones finales sean claras. |
-| RG-07 | Las 16 entradas se programan por puertos; la paleta definitiva aún puede cambiar. |
+| RG-07 | Las 256 entradas se programan por puertos y sus 768 componentes se verifican leyendo de vuelta el DAC. |
 | RG-08 | Composición en framebuffer implementada; percepción de fluidez y desgarro pendiente en el entorno final. |
 | E4/E5/E6 | Guías de desarrollo y primer registro disponibles; informe final, hoja de sprites y bitácora semanal completa pendientes. |
 | Entorno final | Falta confirmar configuración de DOSBox del curso y hacer una reconstrucción de la entrega definitiva. |
 
 No se interpreta que este avance cumpla por completo la rúbrica final. La próxima verificación debe repetirse después de integrar los recursos reales, porque cambiarán datos, tamaños y presentación.
+
+## Validación específica de dulces
+
+El conjunto ASM pasa 12.081 comprobaciones con cero fallos. Se incluyen 768 comparaciones de lectura del DAC con las tripletas enlazadas en el EXE. Las cinco pruebas Python pasan sin omisiones tras `build.ps1 -Test`. Verifican fuentes idénticas al ZIP, transparencia, 256 bytes por ficha, equivalencia INC/TXT, paleta y disposición de las ocho fichas.
+
+Las capturas reales `HARD.RAW` y `HARDB.RAW` se comparan contra los píxeles esperados del catálogo completo y cinco fichas de la propuesta. Esto comprueba direcciones, transparencia y selección de ambos cuadros. La captura ampliada para inspección está en [capturas/hard_dulces.png](capturas/hard_dulces.png). La lectura del DAC comprueba los colores programados; la revisión del PNG confirma presentación, pero no sustituye una sesión interactiva de teclado ni evalúa animación percibida.
+
+Las fichas recibidas son estáticas (A/B idénticos); mascota y finales siguen siendo marcadores. Esos requisitos gráficos permanecen parciales.

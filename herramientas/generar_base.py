@@ -41,12 +41,15 @@ def tabla(nombre, valores):
 
 
 def generar():
+    ruta_sprites = ROOT / "src" / "sprites.inc"
+    if ruta_sprites.exists() and "Generado por integrar_dulces.py" in ruta_sprites.read_text(encoding="ascii"):
+        raise SystemExit("Los dulces ya estan integrados. Usa herramientas/integrar_dulces.py.")
     paleta = json.loads((ROOT / "sprites" / "paleta.json").read_text(encoding="utf-8"))
     colores = paleta["colores"]
-    assert [c["indice"] for c in colores] == list(range(16))
+    assert [c["indice"] for c in colores] == list(range(len(colores)))
     assert all(0 <= v <= 63 for c in colores for v in c["rgb"])
     texto_paleta = tabla("paleta", [v for c in colores for v in c["rgb"]])
-    (ROOT / "src" / "palette.inc").write_text(texto_paleta + "\n", encoding="ascii")
+    (ROOT / "src" / "palette.inc").write_text(texto_paleta + "\npaletaFin LABEL BYTE\n", encoding="ascii")
     fichas = []
     for patron, color in zip(PATRONES, [4, 5, 6, 8, 9, 11, 12, 14]):
         for frame in range(2):

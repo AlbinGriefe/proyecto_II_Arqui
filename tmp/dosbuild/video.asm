@@ -4,6 +4,7 @@ INCLUDE vars.inc
 PUBLIC IniciarVideo, RestaurarVideo, CargarPaleta, LimpiarPantalla
 PUBLIC Rectangulo, DibujarSprite, DibujarTexto, DibujarNumero
 PUBLIC Presentar
+PUBLIC DibujarDigitoMini, DibujarNumeroMini
 ; Segmento independiente: el framebuffer no consume los 64 KiB de DGROUP.
 SCREEN SEGMENT PARA PUBLIC 'SCREEN'
 screenBuf db 64000 dup (?)
@@ -13,6 +14,12 @@ spriteW dw 0
 textoX dw 0
 textoColor db 0
 textoChar db 0, 0, 0
+miniColor db 0
+miniUnidades db 0
+miniX dw 0
+; Fuente propia 3x5, cinco filas de tres bits por digito.
+miniDigitos db 7,5,5,5,7, 2,6,2,2,7, 7,1,7,4,7, 7,1,7,1,7, 5,5,7,1,1
+            db 7,4,7,1,7, 7,4,7,5,7, 7,1,1,1,1, 7,5,7,5,7, 7,5,7,1,7
 .CODE
 ; E: ninguna. S: modo 13h y fuente ROM localizada. Registros preservados.
 IniciarVideo PROC NEAR
@@ -60,7 +67,8 @@ RestaurarVideo PROC NEAR
     ret
 RestaurarVideo ENDP
 
-; E: paleta con 16 tripletas DAC 0..63. S: entradas VGA 0..15 programadas.
+; E: paleta..paletaFin con hasta 256 tripletas DAC 0..63.
+; S: todas las entradas de la paleta compartida programadas desde el indice 0.
 ; Registros preservados; FLAGS destruidos.
 CargarPaleta PROC NEAR
     push ax
@@ -72,7 +80,9 @@ CargarPaleta PROC NEAR
     out dx, al
     inc dx
     mov si, OFFSET paleta
-    mov cx, 48
+    mov cx, OFFSET paletaFin
+    sub cx, si
+    cld
 cp_bucle:
     lodsb
     out dx, al
@@ -307,6 +317,81 @@ DibujarNumero PROC NEAR
     pop ax
     ret
 DibujarNumero ENDP
+
+; E: CL=0..9, AX=x, DX=y, BL=color. S: digito 3x5. Preserva registros.
+; Usa Rectangulo sobre SCREEN; el llamador garantiza x<=317, y<=195.
+DibujarDigitoMini PROC NEAR
+    push ax
+    push bx
+    push cx
+    push dx
+    push si
+    push di
+    push bp
+    cmp cl, 9
+    ja ddm_fin
+    mov miniColor, bl
+    mov miniX, ax
+    xor bx, bx
+    mov bl, cl
+    mov si, bx
+    shl bx, 1
+    shl bx, 1
+    add si, bx
+    mov di, 5
+ddm_fila:
+    mov bh, miniDigitos[si]
+    mov cl, 5
+    shl bh, cl
+    mov cx, 3
+ddm_pixel:
+    shl bh, 1
+    jnc ddm_fondo
+    push cx
+    mov cx, 1
+    mov bp, 1
+    mov bl, miniColor
+    call Rectangulo
+    pop cx
+ddm_fondo:
+    inc ax
+    loop ddm_pixel
+    mov ax, miniX
+    inc dx
+    inc si
+    dec di
+    jnz ddm_fila
+ddm_fin:
+    pop bp
+    pop di
+    pop si
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+DibujarDigitoMini ENDP
+
+; E: CL=0..99, AX=x, DX=y, BL=color. S: dos digitos en 7x5. Preserva registros.
+DibujarNumeroMini PROC NEAR
+    push ax
+    push cx
+    push ax
+    mov al, cl
+    xor ah, ah
+    mov cl, 10
+    div cl
+    mov miniUnidades, ah
+    mov cl, al
+    pop ax
+    call DibujarDigitoMini
+    add ax, 4
+    mov cl, miniUnidades
+    call DibujarDigitoMini
+    pop cx
+    pop ax
+    ret
+DibujarNumeroMini ENDP
 
 ; E: framebuffer SCREEN. S: imagen completa en A000h, 32000 palabras.
 ; Registros/segmentos preservados. Sin borrado visible entre dibujos.

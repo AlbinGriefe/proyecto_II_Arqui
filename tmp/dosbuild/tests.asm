@@ -4,6 +4,7 @@ INCLUDE vars.inc
 INCLUDE game.inc
 INCLUDE video.inc
 INCLUDE ui.inc
+INCLUDE input.inc
 PUBLIC EjecutarPruebas
 .DATA
 ; Cada fila: secreto[5], propuesta[5], N, C, toros, vacas.
@@ -26,6 +27,16 @@ snapGame db 'GAME.RAW',0
 snapWin db 'WIN.RAW',0
 snapLose db 'LOSE.RAW',0
 snapHard db 'HARD.RAW',0
+snapHardB db 'HARDB.RAW',0
+snapHelp db 'HELP.RAW',0
+snapSecret db 'SECRET.RAW',0
+snapSplashB db 'SPLASHB.RAW',0
+snapWinB db 'WINB.RAW',0
+snapLoseB db 'LOSEB.RAW',0
+snapNormal db 'NORMAL.RAW',0
+snapFullHard db 'FULLHARD.RAW',0
+snapLevel db 'LEVEL.RAW',0
+snapCredits db 'CREDITS.RAW',0
 probeSprite db 0,4,0,5
 countLabel db 'Comprobaciones: $'
 errorLabel db ' Fallos: $'
@@ -313,6 +324,233 @@ RenderPrueba PROC NEAR
     ret
 RenderPrueba ENDP
 
+; E: DX=archivo B. S: captura el segundo cuadro sin redibujar el fondo completo.
+; Preserva registros; permite detectar restos de los cuadros transparentes.
+CapturarAnimacionB PROC NEAR
+    mov cuadro, 1
+    call DibujarAnimacion
+    call Presentar
+    call CapturarPantalla
+    mov cuadro, 0
+    ret
+CapturarAnimacionB ENDP
+
+; E: ninguna. S: dos partidas perdidas de diez intentos con propuestas variadas.
+; Preserva registros. Usa ConfirmarIntento real para llenar todas las filas.
+ProbarHistoriasLlenas PROC NEAR
+    push ax
+    push bx
+    push cx
+    push dx
+    push si
+    push bp
+    mov nivel, 1
+phl_nivel:
+    call NuevaPartida
+    xor si, si
+    mov al, nTipos
+    dec al
+    mov cx, MAX_N
+phl_secreto:
+    mov secreto[si], al
+    inc si
+    loop phl_secreto
+    xor bp, bp
+phl_turno:
+    xor si, si
+phl_casilla:
+    mov ax, bp
+    add ax, si
+    xor dx, dx
+    xor bx, bx
+    mov bl, nTipos
+    div bx
+    mov propuesta[si], dl
+    inc si
+    xor cx, cx
+    mov cl, nFichas
+    cmp si, cx
+    jb phl_casilla
+    call ConfirmarIntento
+    inc bp
+    cmp bp, 10
+    jb phl_turno
+    cmp estado, ST_LOSE
+    call Afirmar
+    cmp usados, 10
+    call Afirmar
+    call RenderPrueba
+    mov dx, OFFSET snapNormal
+    cmp nivel, 1
+    je phl_captura
+    mov dx, OFFSET snapFullHard
+phl_captura:
+    call CapturarPantalla
+    inc nivel
+    cmp nivel, 3
+    jb phl_nivel
+    pop bp
+    pop si
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+ProbarHistoriasLlenas ENDP
+
+; E: AX=tecla BIOS. S: tecla insertada, leida por BIOS y enviada al coordinador.
+; Preserva registros. Se comprueban cola, disponibilidad y valor leido.
+InyectarTeclaPrueba PROC NEAR
+    push ax
+    push bx
+    push cx
+    mov bx, ax
+    mov cx, ax
+    mov ah, 05h
+    int 16h
+    cmp al, 0
+    call Afirmar
+    call LeerTecla
+    jc itp_disponible
+    inc fallos
+itp_disponible:
+    inc comprobaciones
+    cmp ax, bx
+    call Afirmar
+    call ProcesarTecla
+    pop cx
+    pop bx
+    pop ax
+    ret
+InyectarTeclaPrueba ENDP
+
+; E: ninguna. S: prueba BIOS de editar/borrar/mover/salir y reloj de animacion.
+; Preserva registros. Espera tres tics BIOS, aproximadamente 165 ms.
+ProbarEntradaYReloj PROC NEAR
+    push ax
+    push bx
+    push dx
+    mov nivel, 0
+    call NuevaPartida
+    mov ax, 0231h
+    call InyectarTeclaPrueba
+    cmp propuesta, 0
+    call Afirmar
+    mov ax, 4D00h
+    call InyectarTeclaPrueba
+    cmp activo, 1
+    call Afirmar
+    mov ax, 0332h
+    call InyectarTeclaPrueba
+    cmp propuesta+1, 1
+    call Afirmar
+    mov ax, 0E08h
+    call InyectarTeclaPrueba
+    cmp propuesta+1, EMPTY
+    call Afirmar
+    mov ax, 1C0Dh
+    call InyectarTeclaPrueba
+    cmp usados, 0
+    call Afirmar
+    cmp mensaje, MSG_HOLES
+    call Afirmar
+    mov ax, 4B00h
+    call InyectarTeclaPrueba
+    cmp activo, 0
+    call Afirmar
+    mov ax, 4800h
+    call InyectarTeclaPrueba
+    cmp propuesta, 1
+    call Afirmar
+    mov ax, 5000h
+    call InyectarTeclaPrueba
+    cmp propuesta, 0
+    call Afirmar
+    mov ax, 0938h
+    call InyectarTeclaPrueba
+    cmp propuesta, 0
+    call Afirmar
+    mov ax, 011Bh
+    call InyectarTeclaPrueba
+    cmp estado, ST_MENU
+    call Afirmar
+    mov menuSel, 1
+    mov ax, 1C0Dh
+    call InyectarTeclaPrueba
+    cmp estado, ST_LEVEL
+    call Afirmar
+    mov ax, 5000h
+    call InyectarTeclaPrueba
+    cmp nivel, 1
+    call Afirmar
+    cmp maxTurnos, 10
+    call Afirmar
+    mov ax, 1C0Dh
+    call InyectarTeclaPrueba
+    cmp estado, ST_MENU
+    call Afirmar
+    mov menuSel, 2
+    call InyectarTeclaPrueba
+    cmp estado, ST_HELP
+    call Afirmar
+    mov ax, 011Bh
+    call InyectarTeclaPrueba
+    cmp estado, ST_MENU
+    call Afirmar
+    mov menuSel, 4
+    mov ax, 1C0Dh
+    call InyectarTeclaPrueba
+    cmp estado, ST_EXIT
+    call Afirmar
+    call LeerTic
+    mov ultimoTic, dx
+    mov bx, dx
+    mov cuadro, 0
+peyr_espera:
+    call LeerTic
+    sub dx, bx
+    cmp dx, ANIM_TICKS
+    jb peyr_espera
+    call ActualizarReloj
+    jc peyr_cambio
+    inc fallos
+peyr_cambio:
+    inc comprobaciones
+    cmp cuadro, 1
+    call Afirmar
+    pop dx
+    pop bx
+    pop ax
+    ret
+ProbarEntradaYReloj ENDP
+
+; E: paleta VGA cargada. S: compara cada componente del DAC con la tabla del EXE.
+; Preserva registros; detecta cargas truncadas al ampliar la paleta de los sprites.
+ProbarPaleta PROC NEAR
+    push ax
+    push cx
+    push dx
+    push si
+    mov dx, 3C7h
+    xor al, al
+    out dx, al
+    mov dx, 3C9h
+    mov si, OFFSET paleta
+    mov cx, OFFSET paletaFin
+    sub cx, si
+ppal_componente:
+    in al, dx
+    cmp al, [si]
+    call Afirmar
+    inc si
+    loop ppal_componente
+    pop si
+    pop dx
+    pop cx
+    pop ax
+    ret
+ProbarPaleta ENDP
+
 ; E: ninguna. S: verifica transparencia, limites y rutas de pantallas en VGA.
 ; Preserva registros. Captura imagenes de diagnostico y restaura el modo previo.
 ProbarVideo PROC NEAR
@@ -325,6 +563,7 @@ ProbarVideo PROC NEAR
     push es
     call IniciarVideo
     call CargarPaleta
+    call ProbarPaleta
     mov al, 14
     call LimpiarPantalla
     mov si, OFFSET probeSprite
@@ -353,6 +592,8 @@ pv_rechazado:
     call RenderPrueba
     mov dx, OFFSET snapSplash
     call CapturarPantalla
+    mov dx, OFFSET snapSplashB
+    call CapturarAnimacionB
     mov ax, 1C0Dh
     call ProcesarTecla
     cmp estado, ST_MENU
@@ -365,6 +606,9 @@ pv_rechazado:
     call ProcesarTecla
     cmp estado, ST_SECRET
     call Afirmar
+    call RenderPrueba
+    mov dx, OFFSET snapSecret
+    call CapturarPantalla
     mov propuesta, 0
     mov propuesta+1, 0
     mov propuesta+2, 1
@@ -390,6 +634,8 @@ pv_rechazado:
     call RenderPrueba
     mov dx, OFFSET snapWin
     call CapturarPantalla
+    mov dx, OFFSET snapWinB
+    call CapturarAnimacionB
     call PrepararManual
     mov propuesta, 0
     mov propuesta+1, 0
@@ -412,10 +658,24 @@ pv_agotar:
     call RenderPrueba
     mov dx, OFFSET snapLose
     call CapturarPantalla
+    mov dx, OFFSET snapLoseB
+    call CapturarAnimacionB
     mov nivel, 2
     call NuevaPartida
+    ; Capturar fichas distintas en propuesta y ambos cuadros para revisar offsets.
+    mov propuesta, 0
+    mov propuesta+1, 3
+    mov propuesta+2, 5
+    mov propuesta+3, 6
+    mov propuesta+4, 7
+    mov cuadro, 0
     call RenderPrueba
     mov dx, OFFSET snapHard
+    call CapturarPantalla
+    mov cuadro, 1
+    call DibujarAnimacion
+    call Presentar
+    mov dx, OFFSET snapHardB
     call CapturarPantalla
     ; Vuelve al menu y comprueba el resto de pantallas y seleccion de nivel.
     mov ax, 011Bh
@@ -430,6 +690,8 @@ pv_agotar:
     cmp nivel, 1
     call Afirmar
     call RenderPrueba
+    mov dx, OFFSET snapLevel
+    call CapturarPantalla
     mov ax, 1C0Dh
     call ProcesarTecla
     mov menuSel, 2
@@ -437,6 +699,8 @@ pv_agotar:
     cmp estado, ST_HELP
     call Afirmar
     call RenderPrueba
+    mov dx, OFFSET snapHelp
+    call CapturarPantalla
     mov ax, 011Bh
     call ProcesarTecla
     mov menuSel, 3
@@ -445,6 +709,10 @@ pv_agotar:
     cmp estado, ST_CREDITS
     call Afirmar
     call RenderPrueba
+    mov dx, OFFSET snapCredits
+    call CapturarPantalla
+    call ProbarHistoriasLlenas
+    call ProbarEntradaYReloj
     call RestaurarVideo
     mov ah, 0Fh
     int 10h

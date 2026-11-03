@@ -13,3 +13,11 @@ La indicación del usuario establece que los assets se prepararán en otro chat 
 **Aportes de cada integrante:** pendientes de registrar con nombres y trabajo real. Este registro del avance asistido no debe presentarse como una contribución individual inventada ni como una bitácora de semanas anteriores. La entrega final debe conservar una página por semana según el enunciado.
 
 Próximo registro: diseño de la temática, entrega de PNG originales, acuerdo sobre la maqueta de Fácil, integración de cuadros y validación con la pareja.
+
+## Integración de dulces — 2 de noviembre de 2026 (fecha local)
+
+Se recibió el ZIP con doce sprites de 16×16 y transparencia binaria. Se conservaron los originales y se convirtieron todos contra una paleta global de 256 entradas, manteniendo los 16 colores de interfaz. Se integraron los ocho primeros en catálogo y propuesta, con dos copias del cuadro estático por tipo para mantener el contrato de direcciones. Los cuatro restantes quedan disponibles en INC/TXT.
+
+Se añadió `integrar_dulces.py`, una guarda contra sobrescritura de marcadores, carga dinámica del tamaño de paleta y verificación de sus componentes en el DAC. Se comprobó la identidad de los PNG y se compararon capturas del ASM píxel por píxel. Resultado: 12.081 comprobaciones ASM y cinco pruebas Python superadas; ensamblado sin errores ni advertencias. La captura y las decisiones están en la documentación.
+
+Pendientes: cuadros animados propios, mascota/finales temáticos, ayuda gráfica e historial. No se atribuyen aportes individuales sin datos de los integrantes.

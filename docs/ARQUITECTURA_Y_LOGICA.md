@@ -126,10 +126,14 @@ La dirección de un píxel es `y*320+x`. `DibujarSprite` recibe DS:SI, AX=x, DX=
 
 El destino de rectángulos, texto y sprites es `SCREEN`. `Presentar` copia 32.000 palabras con `CLD` y `REP MOVSW` hacia A000h. Componer la imagen fuera de VGA evita mostrar las etapas de borrado y dibujo. La copia no está sincronizada con el retrazo vertical: queda pendiente comprobar desgarro visual en la configuración final del curso.
 
-La paleta se programa con OUT en 3C8h/3C9h a partir de 16 tripletas RGB 0..63. Los sprites actuales tienen dos cuadros de 256 bytes: `tipo*512 + cuadro*256`. Mascota, victoria y derrota también tienen dos cuadros; sus diseños son marcadores temporales. Antes de cambiar un cuadro se restaura el fondo para eliminar los píxeles de la imagen anterior.
+La paleta se programa con OUT en 3C8h/3C9h a partir de 256 tripletas RGB 0..63. El tamaño se calcula mediante `paletaFin-paleta`, por lo que la carga no queda limitada a las 16 entradas iniciales de interfaz. Las ocho fichas de dulces tienen dos cuadros de 256 bytes, actualmente idénticos porque el paquete trae una sola imagen por ficha: `tipo*512 + cuadro*256`. Mascota, victoria y derrota también tienen dos cuadros; sus diseños son marcadores temporales. Antes de cambiar un cuadro se restaura el fondo para eliminar los píxeles de la imagen anterior.
 
 El historial usa números de ficha de 8×8, en filas de 13 píxeles, para mantener 12 intentos dentro del tablero de 168 píxeles de alto. El catálogo y la propuesta usan los sprites de 16×16. Esta decisión tiene que revisarse con los diseños definitivos y el conflicto de la maqueta.
 
 ## Referencias técnicas consultadas
 
 La memoria y el PDF definen los requisitos. Para confirmar las interfaces se consultó HelpPC: [fuente ROM](https://helppc.netcore2k.net/interrupt/int-10-11), [teclado no bloqueante](https://helppc.netcore2k.net/interrupt/int-16-1), [reloj para la semilla](https://helppc.netcore2k.net/interrupt/int-1a-0) y [modo y página de video](https://helppc.netcore2k.net/interrupt/int-10-f). Estas referencias no sustituyen los resultados de la ejecución en DOSBox.
+
+## Integración de los dulces
+
+`herramientas/integrar_dulces.py` valida los doce PNG, conserva los colores 0..15 de interfaz y cuantiza todos los dulces contra una paleta común. Genera los ocho tipos activos y mantiene sin cambios las etiquetas `sprites`, `mascota` y `finale`. El motor del juego sigue trabajando con IDs 0..7; no requiere cambios de reglas ni de evaluación. El título visible pasa a «Clave Dulce». La especificación y sus límites están en [INTEGRACION_DULCES.md](INTEGRACION_DULCES.md).

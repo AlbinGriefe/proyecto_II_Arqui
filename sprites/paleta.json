@@ -1,22 +1,2310 @@
 {
-  "nombre": "Paleta provisional VGA16 del proyecto",
+  "nombre": "Paleta compartida VGA: interfaz y dulces",
   "rango_dac": 63,
   "colores": [
-    {"indice": 0, "nombre": "Transparente / negro", "rgb": [0, 0, 0]},
-    {"indice": 1, "nombre": "Fondo", "rgb": [4, 6, 12]},
-    {"indice": 2, "nombre": "Panel", "rgb": [8, 12, 20]},
-    {"indice": 3, "nombre": "Borde", "rgb": [18, 24, 32]},
-    {"indice": 4, "nombre": "Rojo", "rgb": [58, 17, 20]},
-    {"indice": 5, "nombre": "Verde", "rgb": [17, 48, 30]},
-    {"indice": 6, "nombre": "Azul", "rgb": [18, 32, 60]},
-    {"indice": 7, "nombre": "Texto suave", "rgb": [42, 47, 54]},
-    {"indice": 8, "nombre": "Morado", "rgb": [44, 23, 58]},
-    {"indice": 9, "nombre": "Naranja", "rgb": [63, 34, 12]},
-    {"indice": 10, "nombre": "Acierto exacto", "rgb": [27, 61, 41]},
-    {"indice": 11, "nombre": "Cian", "rgb": [15, 51, 57]},
-    {"indice": 12, "nombre": "Rosa", "rgb": [60, 28, 44]},
-    {"indice": 13, "nombre": "Derrota", "rgb": [63, 23, 27]},
-    {"indice": 14, "nombre": "Seleccion / parcial", "rgb": [63, 52, 22]},
-    {"indice": 15, "nombre": "Texto principal", "rgb": [60, 62, 63]}
+    {
+      "indice": 0,
+      "nombre": "Transparente / negro",
+      "rgb": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "indice": 1,
+      "nombre": "Fondo",
+      "rgb": [
+        4,
+        6,
+        12
+      ]
+    },
+    {
+      "indice": 2,
+      "nombre": "Panel",
+      "rgb": [
+        8,
+        12,
+        20
+      ]
+    },
+    {
+      "indice": 3,
+      "nombre": "Borde",
+      "rgb": [
+        18,
+        24,
+        32
+      ]
+    },
+    {
+      "indice": 4,
+      "nombre": "Rojo",
+      "rgb": [
+        58,
+        17,
+        20
+      ]
+    },
+    {
+      "indice": 5,
+      "nombre": "Verde",
+      "rgb": [
+        17,
+        48,
+        30
+      ]
+    },
+    {
+      "indice": 6,
+      "nombre": "Azul",
+      "rgb": [
+        18,
+        32,
+        60
+      ]
+    },
+    {
+      "indice": 7,
+      "nombre": "Texto suave",
+      "rgb": [
+        42,
+        47,
+        54
+      ]
+    },
+    {
+      "indice": 8,
+      "nombre": "Morado",
+      "rgb": [
+        44,
+        23,
+        58
+      ]
+    },
+    {
+      "indice": 9,
+      "nombre": "Naranja",
+      "rgb": [
+        63,
+        34,
+        12
+      ]
+    },
+    {
+      "indice": 10,
+      "nombre": "Acierto exacto",
+      "rgb": [
+        27,
+        61,
+        41
+      ]
+    },
+    {
+      "indice": 11,
+      "nombre": "Cian",
+      "rgb": [
+        15,
+        51,
+        57
+      ]
+    },
+    {
+      "indice": 12,
+      "nombre": "Rosa",
+      "rgb": [
+        60,
+        28,
+        44
+      ]
+    },
+    {
+      "indice": 13,
+      "nombre": "Derrota",
+      "rgb": [
+        63,
+        23,
+        27
+      ]
+    },
+    {
+      "indice": 14,
+      "nombre": "Seleccion / parcial",
+      "rgb": [
+        63,
+        52,
+        22
+      ]
+    },
+    {
+      "indice": 15,
+      "nombre": "Texto principal",
+      "rgb": [
+        60,
+        62,
+        63
+      ]
+    },
+    {
+      "indice": 16,
+      "nombre": "Dulces 16",
+      "rgb": [
+        63,
+        63,
+        63
+      ]
+    },
+    {
+      "indice": 17,
+      "nombre": "Dulces 17",
+      "rgb": [
+        7,
+        0,
+        0
+      ]
+    },
+    {
+      "indice": 18,
+      "nombre": "Dulces 18",
+      "rgb": [
+        63,
+        38,
+        0
+      ]
+    },
+    {
+      "indice": 19,
+      "nombre": "Dulces 19",
+      "rgb": [
+        11,
+        47,
+        12
+      ]
+    },
+    {
+      "indice": 20,
+      "nombre": "Dulces 20",
+      "rgb": [
+        46,
+        0,
+        4
+      ]
+    },
+    {
+      "indice": 21,
+      "nombre": "Dulces 21",
+      "rgb": [
+        46,
+        35,
+        35
+      ]
+    },
+    {
+      "indice": 22,
+      "nombre": "Dulces 22",
+      "rgb": [
+        63,
+        61,
+        30
+      ]
+    },
+    {
+      "indice": 23,
+      "nombre": "Dulces 23",
+      "rgb": [
+        26,
+        18,
+        17
+      ]
+    },
+    {
+      "indice": 24,
+      "nombre": "Dulces 24",
+      "rgb": [
+        35,
+        53,
+        20
+      ]
+    },
+    {
+      "indice": 25,
+      "nombre": "Dulces 25",
+      "rgb": [
+        62,
+        17,
+        15
+      ]
+    },
+    {
+      "indice": 26,
+      "nombre": "Dulces 26",
+      "rgb": [
+        42,
+        24,
+        0
+      ]
+    },
+    {
+      "indice": 27,
+      "nombre": "Dulces 27",
+      "rgb": [
+        62,
+        48,
+        48
+      ]
+    },
+    {
+      "indice": 28,
+      "nombre": "Dulces 28",
+      "rgb": [
+        11,
+        23,
+        3
+      ]
+    },
+    {
+      "indice": 29,
+      "nombre": "Dulces 29",
+      "rgb": [
+        63,
+        57,
+        10
+      ]
+    },
+    {
+      "indice": 30,
+      "nombre": "Dulces 30",
+      "rgb": [
+        27,
+        6,
+        0
+      ]
+    },
+    {
+      "indice": 31,
+      "nombre": "Dulces 31",
+      "rgb": [
+        58,
+        39,
+        20
+      ]
+    },
+    {
+      "indice": 32,
+      "nombre": "Dulces 32",
+      "rgb": [
+        41,
+        28,
+        17
+      ]
+    },
+    {
+      "indice": 33,
+      "nombre": "Dulces 33",
+      "rgb": [
+        63,
+        1,
+        7
+      ]
+    },
+    {
+      "indice": 34,
+      "nombre": "Dulces 34",
+      "rgb": [
+        58,
+        22,
+        0
+      ]
+    },
+    {
+      "indice": 35,
+      "nombre": "Dulces 35",
+      "rgb": [
+        63,
+        63,
+        47
+      ]
+    },
+    {
+      "indice": 36,
+      "nombre": "Dulces 36",
+      "rgb": [
+        58,
+        41,
+        34
+      ]
+    },
+    {
+      "indice": 37,
+      "nombre": "Dulces 37",
+      "rgb": [
+        18,
+        11,
+        9
+      ]
+    },
+    {
+      "indice": 38,
+      "nombre": "Dulces 38",
+      "rgb": [
+        30,
+        19,
+        2
+      ]
+    },
+    {
+      "indice": 39,
+      "nombre": "Dulces 39",
+      "rgb": [
+        6,
+        35,
+        5
+      ]
+    },
+    {
+      "indice": 40,
+      "nombre": "Dulces 40",
+      "rgb": [
+        49,
+        12,
+        0
+      ]
+    },
+    {
+      "indice": 41,
+      "nombre": "Dulces 41",
+      "rgb": [
+        62,
+        30,
+        12
+      ]
+    },
+    {
+      "indice": 42,
+      "nombre": "Dulces 42",
+      "rgb": [
+        54,
+        46,
+        3
+      ]
+    },
+    {
+      "indice": 43,
+      "nombre": "Dulces 43",
+      "rgb": [
+        56,
+        53,
+        39
+      ]
+    },
+    {
+      "indice": 44,
+      "nombre": "Dulces 44",
+      "rgb": [
+        62,
+        50,
+        21
+      ]
+    },
+    {
+      "indice": 45,
+      "nombre": "Dulces 45",
+      "rgb": [
+        54,
+        27,
+        20
+      ]
+    },
+    {
+      "indice": 46,
+      "nombre": "Dulces 46",
+      "rgb": [
+        38,
+        9,
+        0
+      ]
+    },
+    {
+      "indice": 47,
+      "nombre": "Dulces 47",
+      "rgb": [
+        63,
+        52,
+        0
+      ]
+    },
+    {
+      "indice": 48,
+      "nombre": "Dulces 48",
+      "rgb": [
+        52,
+        31,
+        1
+      ]
+    },
+    {
+      "indice": 49,
+      "nombre": "Dulces 49",
+      "rgb": [
+        34,
+        29,
+        9
+      ]
+    },
+    {
+      "indice": 50,
+      "nombre": "Dulces 50",
+      "rgb": [
+        48,
+        36,
+        22
+      ]
+    },
+    {
+      "indice": 51,
+      "nombre": "Dulces 51",
+      "rgb": [
+        17,
+        3,
+        0
+      ]
+    },
+    {
+      "indice": 52,
+      "nombre": "Dulces 52",
+      "rgb": [
+        58,
+        56,
+        53
+      ]
+    },
+    {
+      "indice": 53,
+      "nombre": "Dulces 53",
+      "rgb": [
+        62,
+        50,
+        31
+      ]
+    },
+    {
+      "indice": 54,
+      "nombre": "Dulces 54",
+      "rgb": [
+        58,
+        49,
+        12
+      ]
+    },
+    {
+      "indice": 55,
+      "nombre": "Dulces 55",
+      "rgb": [
+        46,
+        11,
+        9
+      ]
+    },
+    {
+      "indice": 56,
+      "nombre": "Dulces 56",
+      "rgb": [
+        42,
+        29,
+        29
+      ]
+    },
+    {
+      "indice": 57,
+      "nombre": "Dulces 57",
+      "rgb": [
+        60,
+        59,
+        20
+      ]
+    },
+    {
+      "indice": 58,
+      "nombre": "Dulces 58",
+      "rgb": [
+        63,
+        29,
+        3
+      ]
+    },
+    {
+      "indice": 59,
+      "nombre": "Dulces 59",
+      "rgb": [
+        63,
+        55,
+        43
+      ]
+    },
+    {
+      "indice": 60,
+      "nombre": "Dulces 60",
+      "rgb": [
+        26,
+        12,
+        7
+      ]
+    },
+    {
+      "indice": 61,
+      "nombre": "Dulces 61",
+      "rgb": [
+        19,
+        45,
+        11
+      ]
+    },
+    {
+      "indice": 62,
+      "nombre": "Dulces 62",
+      "rgb": [
+        57,
+        14,
+        2
+      ]
+    },
+    {
+      "indice": 63,
+      "nombre": "Dulces 63",
+      "rgb": [
+        58,
+        0,
+        1
+      ]
+    },
+    {
+      "indice": 64,
+      "nombre": "Dulces 64",
+      "rgb": [
+        62,
+        61,
+        38
+      ]
+    },
+    {
+      "indice": 65,
+      "nombre": "Dulces 65",
+      "rgb": [
+        12,
+        6,
+        5
+      ]
+    },
+    {
+      "indice": 66,
+      "nombre": "Dulces 66",
+      "rgb": [
+        54,
+        41,
+        14
+      ]
+    },
+    {
+      "indice": 67,
+      "nombre": "Dulces 67",
+      "rgb": [
+        56,
+        26,
+        10
+      ]
+    },
+    {
+      "indice": 68,
+      "nombre": "Dulces 68",
+      "rgb": [
+        43,
+        17,
+        2
+      ]
+    },
+    {
+      "indice": 69,
+      "nombre": "Dulces 69",
+      "rgb": [
+        5,
+        44,
+        9
+      ]
+    },
+    {
+      "indice": 70,
+      "nombre": "Dulces 70",
+      "rgb": [
+        63,
+        61,
+        55
+      ]
+    },
+    {
+      "indice": 71,
+      "nombre": "Dulces 71",
+      "rgb": [
+        58,
+        56,
+        32
+      ]
+    },
+    {
+      "indice": 72,
+      "nombre": "Dulces 72",
+      "rgb": [
+        61,
+        45,
+        0
+      ]
+    },
+    {
+      "indice": 73,
+      "nombre": "Dulces 73",
+      "rgb": [
+        34,
+        3,
+        0
+      ]
+    },
+    {
+      "indice": 74,
+      "nombre": "Dulces 74",
+      "rgb": [
+        61,
+        48,
+        38
+      ]
+    },
+    {
+      "indice": 75,
+      "nombre": "Dulces 75",
+      "rgb": [
+        21,
+        13,
+        2
+      ]
+    },
+    {
+      "indice": 76,
+      "nombre": "Dulces 76",
+      "rgb": [
+        55,
+        51,
+        49
+      ]
+    },
+    {
+      "indice": 77,
+      "nombre": "Dulces 77",
+      "rgb": [
+        39,
+        34,
+        9
+      ]
+    },
+    {
+      "indice": 78,
+      "nombre": "Dulces 78",
+      "rgb": [
+        36,
+        23,
+        12
+      ]
+    },
+    {
+      "indice": 79,
+      "nombre": "Dulces 79",
+      "rgb": [
+        33,
+        25,
+        2
+      ]
+    },
+    {
+      "indice": 80,
+      "nombre": "Dulces 80",
+      "rgb": [
+        60,
+        46,
+        26
+      ]
+    },
+    {
+      "indice": 81,
+      "nombre": "Dulces 81",
+      "rgb": [
+        32,
+        12,
+        0
+      ]
+    },
+    {
+      "indice": 82,
+      "nombre": "Dulces 82",
+      "rgb": [
+        63,
+        12,
+        11
+      ]
+    },
+    {
+      "indice": 83,
+      "nombre": "Dulces 83",
+      "rgb": [
+        62,
+        48,
+        7
+      ]
+    },
+    {
+      "indice": 84,
+      "nombre": "Dulces 84",
+      "rgb": [
+        36,
+        17,
+        0
+      ]
+    },
+    {
+      "indice": 85,
+      "nombre": "Dulces 85",
+      "rgb": [
+        52,
+        20,
+        0
+      ]
+    },
+    {
+      "indice": 86,
+      "nombre": "Dulces 86",
+      "rgb": [
+        57,
+        38,
+        2
+      ]
+    },
+    {
+      "indice": 87,
+      "nombre": "Dulces 87",
+      "rgb": [
+        60,
+        57,
+        26
+      ]
+    },
+    {
+      "indice": 88,
+      "nombre": "Dulces 88",
+      "rgb": [
+        55,
+        41,
+        25
+      ]
+    },
+    {
+      "indice": 89,
+      "nombre": "Dulces 89",
+      "rgb": [
+        63,
+        54,
+        37
+      ]
+    },
+    {
+      "indice": 90,
+      "nombre": "Dulces 90",
+      "rgb": [
+        63,
+        57,
+        50
+      ]
+    },
+    {
+      "indice": 91,
+      "nombre": "Dulces 91",
+      "rgb": [
+        49,
+        26,
+        0
+      ]
+    },
+    {
+      "indice": 92,
+      "nombre": "Dulces 92",
+      "rgb": [
+        60,
+        42,
+        5
+      ]
+    },
+    {
+      "indice": 93,
+      "nombre": "Dulces 93",
+      "rgb": [
+        44,
+        32,
+        23
+      ]
+    },
+    {
+      "indice": 94,
+      "nombre": "Dulces 94",
+      "rgb": [
+        26,
+        14,
+        0
+      ]
+    },
+    {
+      "indice": 95,
+      "nombre": "Dulces 95",
+      "rgb": [
+        62,
+        54,
+        5
+      ]
+    },
+    {
+      "indice": 96,
+      "nombre": "Dulces 96",
+      "rgb": [
+        43,
+        11,
+        0
+      ]
+    },
+    {
+      "indice": 97,
+      "nombre": "Dulces 97",
+      "rgb": [
+        9,
+        39,
+        7
+      ]
+    },
+    {
+      "indice": 98,
+      "nombre": "Dulces 98",
+      "rgb": [
+        61,
+        33,
+        0
+      ]
+    },
+    {
+      "indice": 99,
+      "nombre": "Dulces 99",
+      "rgb": [
+        62,
+        52,
+        14
+      ]
+    },
+    {
+      "indice": 100,
+      "nombre": "Dulces 100",
+      "rgb": [
+        60,
+        58,
+        58
+      ]
+    },
+    {
+      "indice": 101,
+      "nombre": "Dulces 101",
+      "rgb": [
+        52,
+        15,
+        3
+      ]
+    },
+    {
+      "indice": 102,
+      "nombre": "Dulces 102",
+      "rgb": [
+        12,
+        2,
+        0
+      ]
+    },
+    {
+      "indice": 103,
+      "nombre": "Dulces 103",
+      "rgb": [
+        58,
+        1,
+        8
+      ]
+    },
+    {
+      "indice": 104,
+      "nombre": "Dulces 104",
+      "rgb": [
+        59,
+        27,
+        0
+      ]
+    },
+    {
+      "indice": 105,
+      "nombre": "Dulces 105",
+      "rgb": [
+        60,
+        59,
+        46
+      ]
+    },
+    {
+      "indice": 106,
+      "nombre": "Dulces 106",
+      "rgb": [
+        22,
+        4,
+        0
+      ]
+    },
+    {
+      "indice": 107,
+      "nombre": "Dulces 107",
+      "rgb": [
+        61,
+        26,
+        9
+      ]
+    },
+    {
+      "indice": 108,
+      "nombre": "Dulces 108",
+      "rgb": [
+        63,
+        56,
+        32
+      ]
+    },
+    {
+      "indice": 109,
+      "nombre": "Dulces 109",
+      "rgb": [
+        34,
+        15,
+        4
+      ]
+    },
+    {
+      "indice": 110,
+      "nombre": "Dulces 110",
+      "rgb": [
+        62,
+        55,
+        18
+      ]
+    },
+    {
+      "indice": 111,
+      "nombre": "Dulces 111",
+      "rgb": [
+        52,
+        38,
+        20
+      ]
+    },
+    {
+      "indice": 112,
+      "nombre": "Dulces 112",
+      "rgb": [
+        29,
+        2,
+        2
+      ]
+    },
+    {
+      "indice": 113,
+      "nombre": "Dulces 113",
+      "rgb": [
+        56,
+        43,
+        0
+      ]
+    },
+    {
+      "indice": 114,
+      "nombre": "Dulces 114",
+      "rgb": [
+        61,
+        50,
+        44
+      ]
+    },
+    {
+      "indice": 115,
+      "nombre": "Dulces 115",
+      "rgb": [
+        38,
+        22,
+        1
+      ]
+    },
+    {
+      "indice": 116,
+      "nombre": "Dulces 116",
+      "rgb": [
+        47,
+        17,
+        0
+      ]
+    },
+    {
+      "indice": 117,
+      "nombre": "Dulces 117",
+      "rgb": [
+        54,
+        27,
+        1
+      ]
+    },
+    {
+      "indice": 118,
+      "nombre": "Dulces 118",
+      "rgb": [
+        54,
+        26,
+        14
+      ]
+    },
+    {
+      "indice": 119,
+      "nombre": "Dulces 119",
+      "rgb": [
+        56,
+        18,
+        0
+      ]
+    },
+    {
+      "indice": 120,
+      "nombre": "Dulces 120",
+      "rgb": [
+        63,
+        61,
+        43
+      ]
+    },
+    {
+      "indice": 121,
+      "nombre": "Dulces 121",
+      "rgb": [
+        59,
+        51,
+        28
+      ]
+    },
+    {
+      "indice": 122,
+      "nombre": "Dulces 122",
+      "rgb": [
+        62,
+        54,
+        53
+      ]
+    },
+    {
+      "indice": 123,
+      "nombre": "Dulces 123",
+      "rgb": [
+        16,
+        6,
+        3
+      ]
+    },
+    {
+      "indice": 124,
+      "nombre": "Dulces 124",
+      "rgb": [
+        62,
+        62,
+        59
+      ]
+    },
+    {
+      "indice": 125,
+      "nombre": "Dulces 125",
+      "rgb": [
+        12,
+        43,
+        11
+      ]
+    },
+    {
+      "indice": 126,
+      "nombre": "Dulces 126",
+      "rgb": [
+        62,
+        33,
+        15
+      ]
+    },
+    {
+      "indice": 127,
+      "nombre": "Dulces 127",
+      "rgb": [
+        61,
+        45,
+        35
+      ]
+    },
+    {
+      "indice": 128,
+      "nombre": "Dulces 128",
+      "rgb": [
+        21,
+        8,
+        1
+      ]
+    },
+    {
+      "indice": 129,
+      "nombre": "Dulces 129",
+      "rgb": [
+        48,
+        37,
+        26
+      ]
+    },
+    {
+      "indice": 130,
+      "nombre": "Dulces 130",
+      "rgb": [
+        33,
+        21,
+        0
+      ]
+    },
+    {
+      "indice": 131,
+      "nombre": "Dulces 131",
+      "rgb": [
+        63,
+        42,
+        2
+      ]
+    },
+    {
+      "indice": 132,
+      "nombre": "Dulces 132",
+      "rgb": [
+        29,
+        16,
+        15
+      ]
+    },
+    {
+      "indice": 133,
+      "nombre": "Dulces 133",
+      "rgb": [
+        63,
+        62,
+        51
+      ]
+    },
+    {
+      "indice": 134,
+      "nombre": "Dulces 134",
+      "rgb": [
+        48,
+        32,
+        1
+      ]
+    },
+    {
+      "indice": 135,
+      "nombre": "Dulces 135",
+      "rgb": [
+        57,
+        41,
+        30
+      ]
+    },
+    {
+      "indice": 136,
+      "nombre": "Dulces 136",
+      "rgb": [
+        62,
+        48,
+        3
+      ]
+    },
+    {
+      "indice": 137,
+      "nombre": "Dulces 137",
+      "rgb": [
+        52,
+        43,
+        0
+      ]
+    },
+    {
+      "indice": 138,
+      "nombre": "Dulces 138",
+      "rgb": [
+        62,
+        48,
+        11
+      ]
+    },
+    {
+      "indice": 139,
+      "nombre": "Dulces 139",
+      "rgb": [
+        38,
+        26,
+        1
+      ]
+    },
+    {
+      "indice": 140,
+      "nombre": "Dulces 140",
+      "rgb": [
+        62,
+        22,
+        0
+      ]
+    },
+    {
+      "indice": 141,
+      "nombre": "Dulces 141",
+      "rgb": [
+        42,
+        0,
+        4
+      ]
+    },
+    {
+      "indice": 142,
+      "nombre": "Dulces 142",
+      "rgb": [
+        60,
+        50,
+        35
+      ]
+    },
+    {
+      "indice": 143,
+      "nombre": "Dulces 143",
+      "rgb": [
+        14,
+        25,
+        4
+      ]
+    },
+    {
+      "indice": 144,
+      "nombre": "Dulces 144",
+      "rgb": [
+        60,
+        38,
+        23
+      ]
+    },
+    {
+      "indice": 145,
+      "nombre": "Dulces 145",
+      "rgb": [
+        63,
+        56,
+        24
+      ]
+    },
+    {
+      "indice": 146,
+      "nombre": "Dulces 146",
+      "rgb": [
+        60,
+        41,
+        0
+      ]
+    },
+    {
+      "indice": 147,
+      "nombre": "Dulces 147",
+      "rgb": [
+        61,
+        48,
+        18
+      ]
+    },
+    {
+      "indice": 148,
+      "nombre": "Dulces 148",
+      "rgb": [
+        39,
+        15,
+        0
+      ]
+    },
+    {
+      "indice": 149,
+      "nombre": "Dulces 149",
+      "rgb": [
+        34,
+        9,
+        0
+      ]
+    },
+    {
+      "indice": 150,
+      "nombre": "Dulces 150",
+      "rgb": [
+        7,
+        3,
+        2
+      ]
+    },
+    {
+      "indice": 151,
+      "nombre": "Dulces 151",
+      "rgb": [
+        62,
+        60,
+        26
+      ]
+    },
+    {
+      "indice": 152,
+      "nombre": "Dulces 152",
+      "rgb": [
+        44,
+        27,
+        0
+      ]
+    },
+    {
+      "indice": 153,
+      "nombre": "Dulces 153",
+      "rgb": [
+        54,
+        14,
+        0
+      ]
+    },
+    {
+      "indice": 154,
+      "nombre": "Dulces 154",
+      "rgb": [
+        62,
+        58,
+        16
+      ]
+    },
+    {
+      "indice": 155,
+      "nombre": "Dulces 155",
+      "rgb": [
+        29,
+        9,
+        0
+      ]
+    },
+    {
+      "indice": 156,
+      "nombre": "Dulces 156",
+      "rgb": [
+        60,
+        19,
+        0
+      ]
+    },
+    {
+      "indice": 157,
+      "nombre": "Dulces 157",
+      "rgb": [
+        38,
+        25,
+        14
+      ]
+    },
+    {
+      "indice": 158,
+      "nombre": "Dulces 158",
+      "rgb": [
+        47,
+        14,
+        2
+      ]
+    },
+    {
+      "indice": 159,
+      "nombre": "Dulces 159",
+      "rgb": [
+        62,
+        48,
+        28
+      ]
+    },
+    {
+      "indice": 160,
+      "nombre": "Dulces 160",
+      "rgb": [
+        46,
+        34,
+        20
+      ]
+    },
+    {
+      "indice": 161,
+      "nombre": "Dulces 161",
+      "rgb": [
+        20,
+        9,
+        7
+      ]
+    },
+    {
+      "indice": 162,
+      "nombre": "Dulces 162",
+      "rgb": [
+        61,
+        49,
+        0
+      ]
+    },
+    {
+      "indice": 163,
+      "nombre": "Dulces 163",
+      "rgb": [
+        13,
+        5,
+        1
+      ]
+    },
+    {
+      "indice": 164,
+      "nombre": "Dulces 164",
+      "rgb": [
+        51,
+        16,
+        0
+      ]
+    },
+    {
+      "indice": 165,
+      "nombre": "Dulces 165",
+      "rgb": [
+        63,
+        58,
+        21
+      ]
+    },
+    {
+      "indice": 166,
+      "nombre": "Dulces 166",
+      "rgb": [
+        62,
+        56,
+        46
+      ]
+    },
+    {
+      "indice": 167,
+      "nombre": "Dulces 167",
+      "rgb": [
+        19,
+        5,
+        2
+      ]
+    },
+    {
+      "indice": 168,
+      "nombre": "Dulces 168",
+      "rgb": [
+        60,
+        44,
+        38
+      ]
+    },
+    {
+      "indice": 169,
+      "nombre": "Dulces 169",
+      "rgb": [
+        60,
+        30,
+        1
+      ]
+    },
+    {
+      "indice": 170,
+      "nombre": "Dulces 170",
+      "rgb": [
+        61,
+        45,
+        4
+      ]
+    },
+    {
+      "indice": 171,
+      "nombre": "Dulces 171",
+      "rgb": [
+        62,
+        26,
+        2
+      ]
+    },
+    {
+      "indice": 172,
+      "nombre": "Dulces 172",
+      "rgb": [
+        37,
+        4,
+        1
+      ]
+    },
+    {
+      "indice": 173,
+      "nombre": "Dulces 173",
+      "rgb": [
+        63,
+        55,
+        13
+      ]
+    },
+    {
+      "indice": 174,
+      "nombre": "Dulces 174",
+      "rgb": [
+        62,
+        60,
+        33
+      ]
+    },
+    {
+      "indice": 175,
+      "nombre": "Dulces 175",
+      "rgb": [
+        60,
+        37,
+        1
+      ]
+    },
+    {
+      "indice": 176,
+      "nombre": "Dulces 176",
+      "rgb": [
+        62,
+        54,
+        10
+      ]
+    },
+    {
+      "indice": 177,
+      "nombre": "Dulces 177",
+      "rgb": [
+        30,
+        16,
+        1
+      ]
+    },
+    {
+      "indice": 178,
+      "nombre": "Dulces 178",
+      "rgb": [
+        10,
+        4,
+        2
+      ]
+    },
+    {
+      "indice": 179,
+      "nombre": "Dulces 179",
+      "rgb": [
+        63,
+        51,
+        3
+      ]
+    },
+    {
+      "indice": 180,
+      "nombre": "Dulces 180",
+      "rgb": [
+        63,
+        53,
+        40
+      ]
+    },
+    {
+      "indice": 181,
+      "nombre": "Dulces 181",
+      "rgb": [
+        63,
+        58,
+        42
+      ]
+    },
+    {
+      "indice": 182,
+      "nombre": "Dulces 182",
+      "rgb": [
+        63,
+        35,
+        1
+      ]
+    },
+    {
+      "indice": 183,
+      "nombre": "Dulces 183",
+      "rgb": [
+        55,
+        51,
+        37
+      ]
+    },
+    {
+      "indice": 184,
+      "nombre": "Dulces 184",
+      "rgb": [
+        46,
+        12,
+        0
+      ]
+    },
+    {
+      "indice": 185,
+      "nombre": "Dulces 185",
+      "rgb": [
+        43,
+        8,
+        0
+      ]
+    },
+    {
+      "indice": 186,
+      "nombre": "Dulces 186",
+      "rgb": [
+        61,
+        40,
+        3
+      ]
+    },
+    {
+      "indice": 187,
+      "nombre": "Dulces 187",
+      "rgb": [
+        62,
+        59,
+        52
+      ]
+    },
+    {
+      "indice": 188,
+      "nombre": "Dulces 188",
+      "rgb": [
+        58,
+        57,
+        19
+      ]
+    },
+    {
+      "indice": 189,
+      "nombre": "Dulces 189",
+      "rgb": [
+        56,
+        53,
+        42
+      ]
+    },
+    {
+      "indice": 190,
+      "nombre": "Dulces 190",
+      "rgb": [
+        55,
+        16,
+        3
+      ]
+    },
+    {
+      "indice": 191,
+      "nombre": "Dulces 191",
+      "rgb": [
+        61,
+        59,
+        29
+      ]
+    },
+    {
+      "indice": 192,
+      "nombre": "Dulces 192",
+      "rgb": [
+        61,
+        53,
+        2
+      ]
+    },
+    {
+      "indice": 193,
+      "nombre": "Dulces 193",
+      "rgb": [
+        54,
+        26,
+        17
+      ]
+    },
+    {
+      "indice": 194,
+      "nombre": "Dulces 194",
+      "rgb": [
+        60,
+        24,
+        1
+      ]
+    },
+    {
+      "indice": 195,
+      "nombre": "Dulces 195",
+      "rgb": [
+        61,
+        59,
+        23
+      ]
+    },
+    {
+      "indice": 196,
+      "nombre": "Dulces 196",
+      "rgb": [
+        18,
+        11,
+        6
+      ]
+    },
+    {
+      "indice": 197,
+      "nombre": "Dulces 197",
+      "rgb": [
+        24,
+        11,
+        5
+      ]
+    },
+    {
+      "indice": 198,
+      "nombre": "Dulces 198",
+      "rgb": [
+        60,
+        0,
+        6
+      ]
+    },
+    {
+      "indice": 199,
+      "nombre": "Dulces 199",
+      "rgb": [
+        10,
+        42,
+        9
+      ]
+    },
+    {
+      "indice": 200,
+      "nombre": "Dulces 200",
+      "rgb": [
+        35,
+        12,
+        0
+      ]
+    },
+    {
+      "indice": 201,
+      "nombre": "Dulces 201",
+      "rgb": [
+        60,
+        49,
+        23
+      ]
+    },
+    {
+      "indice": 202,
+      "nombre": "Dulces 202",
+      "rgb": [
+        61,
+        50,
+        50
+      ]
+    },
+    {
+      "indice": 203,
+      "nombre": "Dulces 203",
+      "rgb": [
+        62,
+        56,
+        3
+      ]
+    },
+    {
+      "indice": 204,
+      "nombre": "Dulces 204",
+      "rgb": [
+        46,
+        34,
+        23
+      ]
+    },
+    {
+      "indice": 205,
+      "nombre": "Dulces 205",
+      "rgb": [
+        25,
+        4,
+        0
+      ]
+    },
+    {
+      "indice": 206,
+      "nombre": "Dulces 206",
+      "rgb": [
+        63,
+        47,
+        0
+      ]
+    },
+    {
+      "indice": 207,
+      "nombre": "Dulces 207",
+      "rgb": [
+        54,
+        33,
+        1
+      ]
+    },
+    {
+      "indice": 208,
+      "nombre": "Dulces 208",
+      "rgb": [
+        10,
+        0,
+        0
+      ]
+    },
+    {
+      "indice": 209,
+      "nombre": "Dulces 209",
+      "rgb": [
+        56,
+        20,
+        2
+      ]
+    },
+    {
+      "indice": 210,
+      "nombre": "Dulces 210",
+      "rgb": [
+        59,
+        45,
+        2
+      ]
+    },
+    {
+      "indice": 211,
+      "nombre": "Dulces 211",
+      "rgb": [
+        63,
+        32,
+        1
+      ]
+    },
+    {
+      "indice": 212,
+      "nombre": "Dulces 212",
+      "rgb": [
+        62,
+        51,
+        36
+      ]
+    },
+    {
+      "indice": 213,
+      "nombre": "Dulces 213",
+      "rgb": [
+        61,
+        61,
+        57
+      ]
+    },
+    {
+      "indice": 214,
+      "nombre": "Dulces 214",
+      "rgb": [
+        15,
+        2,
+        1
+      ]
+    },
+    {
+      "indice": 215,
+      "nombre": "Dulces 215",
+      "rgb": [
+        57,
+        54,
+        54
+      ]
+    },
+    {
+      "indice": 216,
+      "nombre": "Dulces 216",
+      "rgb": [
+        32,
+        4,
+        1
+      ]
+    },
+    {
+      "indice": 217,
+      "nombre": "Dulces 217",
+      "rgb": [
+        59,
+        20,
+        2
+      ]
+    },
+    {
+      "indice": 218,
+      "nombre": "Dulces 218",
+      "rgb": [
+        63,
+        55,
+        8
+      ]
+    },
+    {
+      "indice": 219,
+      "nombre": "Dulces 219",
+      "rgb": [
+        41,
+        22,
+        1
+      ]
+    },
+    {
+      "indice": 220,
+      "nombre": "Dulces 220",
+      "rgb": [
+        62,
+        14,
+        12
+      ]
+    },
+    {
+      "indice": 221,
+      "nombre": "Dulces 221",
+      "rgb": [
+        62,
+        0,
+        9
+      ]
+    },
+    {
+      "indice": 222,
+      "nombre": "Dulces 222",
+      "rgb": [
+        61,
+        49,
+        33
+      ]
+    },
+    {
+      "indice": 223,
+      "nombre": "Dulces 223",
+      "rgb": [
+        63,
+        19,
+        16
+      ]
+    },
+    {
+      "indice": 224,
+      "nombre": "Dulces 224",
+      "rgb": [
+        63,
+        52,
+        32
+      ]
+    },
+    {
+      "indice": 225,
+      "nombre": "Dulces 225",
+      "rgb": [
+        63,
+        58,
+        45
+      ]
+    },
+    {
+      "indice": 226,
+      "nombre": "Dulces 226",
+      "rgb": [
+        63,
+        61,
+        35
+      ]
+    },
+    {
+      "indice": 227,
+      "nombre": "Dulces 227",
+      "rgb": [
+        44,
+        18,
+        0
+      ]
+    },
+    {
+      "indice": 228,
+      "nombre": "Dulces 228",
+      "rgb": [
+        54,
+        17,
+        1
+      ]
+    },
+    {
+      "indice": 229,
+      "nombre": "Dulces 229",
+      "rgb": [
+        50,
+        37,
+        23
+      ]
+    },
+    {
+      "indice": 230,
+      "nombre": "Dulces 230",
+      "rgb": [
+        23,
+        6,
+        1
+      ]
+    },
+    {
+      "indice": 231,
+      "nombre": "Dulces 231",
+      "rgb": [
+        48,
+        14,
+        0
+      ]
+    },
+    {
+      "indice": 232,
+      "nombre": "Dulces 232",
+      "rgb": [
+        50,
+        31,
+        0
+      ]
+    },
+    {
+      "indice": 233,
+      "nombre": "Dulces 233",
+      "rgb": [
+        63,
+        61,
+        46
+      ]
+    },
+    {
+      "indice": 234,
+      "nombre": "Dulces 234",
+      "rgb": [
+        62,
+        53,
+        42
+      ]
+    },
+    {
+      "indice": 235,
+      "nombre": "Dulces 235",
+      "rgb": [
+        62,
+        51,
+        19
+      ]
+    },
+    {
+      "indice": 236,
+      "nombre": "Dulces 236",
+      "rgb": [
+        63,
+        49,
+        1
+      ]
+    },
+    {
+      "indice": 237,
+      "nombre": "Dulces 237",
+      "rgb": [
+        63,
+        46,
+        2
+      ]
+    },
+    {
+      "indice": 238,
+      "nombre": "Dulces 238",
+      "rgb": [
+        62,
+        16,
+        13
+      ]
+    },
+    {
+      "indice": 239,
+      "nombre": "Dulces 239",
+      "rgb": [
+        63,
+        39,
+        2
+      ]
+    },
+    {
+      "indice": 240,
+      "nombre": "Dulces 240",
+      "rgb": [
+        63,
+        44,
+        1
+      ]
+    },
+    {
+      "indice": 241,
+      "nombre": "Dulces 241",
+      "rgb": [
+        62,
+        52,
+        38
+      ]
+    },
+    {
+      "indice": 242,
+      "nombre": "Dulces 242",
+      "rgb": [
+        61,
+        43,
+        1
+      ]
+    },
+    {
+      "indice": 243,
+      "nombre": "Dulces 243",
+      "rgb": [
+        63,
+        62,
+        57
+      ]
+    },
+    {
+      "indice": 244,
+      "nombre": "Dulces 244",
+      "rgb": [
+        63,
+        53,
+        35
+      ]
+    },
+    {
+      "indice": 245,
+      "nombre": "Dulces 245",
+      "rgb": [
+        41,
+        9,
+        0
+      ]
+    },
+    {
+      "indice": 246,
+      "nombre": "Dulces 246",
+      "rgb": [
+        15,
+        4,
+        0
+      ]
+    },
+    {
+      "indice": 247,
+      "nombre": "Dulces 247",
+      "rgb": [
+        14,
+        5,
+        3
+      ]
+    },
+    {
+      "indice": 248,
+      "nombre": "Dulces 248",
+      "rgb": [
+        56,
+        45,
+        1
+      ]
+    },
+    {
+      "indice": 249,
+      "nombre": "Dulces 249",
+      "rgb": [
+        62,
+        30,
+        0
+      ]
+    },
+    {
+      "indice": 250,
+      "nombre": "Dulces 250",
+      "rgb": [
+        30,
+        7,
+        0
+      ]
+    },
+    {
+      "indice": 251,
+      "nombre": "Dulces 251",
+      "rgb": [
+        19,
+        4,
+        0
+      ]
+    },
+    {
+      "indice": 252,
+      "nombre": "Dulces 252",
+      "rgb": [
+        63,
+        61,
+        40
+      ]
+    },
+    {
+      "indice": 253,
+      "nombre": "Dulces 253",
+      "rgb": [
+        63,
+        56,
+        6
+      ]
+    },
+    {
+      "indice": 254,
+      "nombre": "Dulces 254",
+      "rgb": [
+        61,
+        28,
+        2
+      ]
+    },
+    {
+      "indice": 255,
+      "nombre": "Dulces 255",
+      "rgb": [
+        61,
+        26,
+        0
+      ]
+    }
   ]
 }

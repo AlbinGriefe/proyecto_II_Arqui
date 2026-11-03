@@ -7,7 +7,7 @@ EXTRN torosHist:BYTE, vacasHist:BYTE, toros:BYTE, vacas:BYTE
 EXTRN frecSec:BYTE, frecProp:BYTE, anterior:BYTE, anteriorN:BYTE
 EXTRN rng:WORD, modoPrevio:BYTE, paginaPrevia:BYTE
 EXTRN fuenteSeg:WORD, fuenteOff:WORD, ultimoTic:WORD, cuadro:BYTE
-EXTRN paleta:BYTE, sprites:BYTE, mascota:BYTE, finale:BYTE
+EXTRN paleta:BYTE, paletaFin:BYTE, sprites:BYTE, mascota:BYTE, finale:BYTE
 EXTRN nivelPtrs:WORD, menuPtrs:WORD, mensajePtrs:WORD
 EXTRN txtTitle:BYTE, txtSplash:BYTE, txtPending:BYTE, txtContinue:BYTE
 EXTRN txtMenu:BYTE, txtLevel:BYTE, txtHelp:BYTE, txtCredits:BYTE
@@ -18,3 +18,8 @@ EXTRN txtBoard:BYTE, txtCatalog:BYTE, txtGuess:BYTE, txtTurn:BYTE
 EXTRN txtLeft:BYTE, txtWon:BYTE, txtLost:BYTE, txtAgain:BYTE
 EXTRN txtSecret:BYTE, txtDebug:BYTE, txtManual:BYTE, txtManual2:BYTE
 EXTRN txtManual3:BYTE
+EXTRN txtAgainLost:BYTE, txtMiniT:BYTE, txtMiniV:BYTE
+EXTRN txtCodeLabel:BYTE, txtExampleLabel:BYTE, txtScoreExample:BYTE
+EXTRN txtScorePartial:BYTE
+EXTRN txtHelpFooter:BYTE, txtManual4:BYTE, txtManual5:BYTE, txtManual6:BYTE
+EXTRN nivelDescPtrs:WORD, txtCreditDesign:BYTE
