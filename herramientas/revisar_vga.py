@@ -23,7 +23,7 @@ def main():
         imagenes[nombre] = im.convert("RGB")
         imagenes[nombre].resize((960, 600), Image.Resampling.NEAREST).save(salida / f"{nombre}.png")
     pantallas = ["SPLASH", "MENU", "SECRET", "HELP", "GAME", "LOSE", "NORMAL", "FULLHARD"]
-    resumen = Image.new("RGB", (1280, 4 * 428), (16, 24, 49))
+    resumen = Image.new("RGB", (1280, 4 * 428), tuple(paleta[3:6]))
     dibujante = ImageDraw.Draw(resumen)
     for i, nombre in enumerate(pantallas):
         x, y = (i % 2) * 640, (i // 2) * 428

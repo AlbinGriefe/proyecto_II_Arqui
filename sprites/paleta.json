@@ -1,5 +1,5 @@
 {
-  "nombre": "Paleta compartida VGA: interfaz y dulces",
+  "nombre": "1. Chocolate oscuro",
   "rango_dac": 63,
   "colores": [
     {
@@ -15,27 +15,27 @@
       "indice": 1,
       "nombre": "Fondo",
       "rgb": [
+        7,
         4,
-        6,
-        12
+        3
       ]
     },
     {
       "indice": 2,
       "nombre": "Panel",
       "rgb": [
+        14,
         8,
-        12,
-        20
+        5
       ]
     },
     {
       "indice": 3,
       "nombre": "Borde",
       "rgb": [
+        29,
         18,
-        24,
-        32
+        11
       ]
     },
     {
@@ -69,9 +69,9 @@
       "indice": 7,
       "nombre": "Texto suave",
       "rgb": [
-        42,
-        47,
-        54
+        54,
+        46,
+        36
       ]
     },
     {
@@ -141,9 +141,9 @@
       "indice": 15,
       "nombre": "Texto principal",
       "rgb": [
+        63,
         60,
-        62,
-        63
+        53
       ]
     },
     {

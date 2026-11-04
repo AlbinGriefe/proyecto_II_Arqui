@@ -50,7 +50,7 @@ txtTitle db 'CLAVE DULCE',0
 txtSplash db 'MASTERMIND DE DULCES',0
 txtPending db 'Un reto de ingenio y reposteria',0
 txtContinue db 'Pulsa una tecla para continuar',0
-txtTeam db 'Integrantes: pendientes de completar',0
+txtTeam db 'Arwee Granados y Albin Greife',0
 txtMenu db 'MENU PRINCIPAL',0
 txtLevel db 'DIFICULTAD (ARRIBA / ABAJO)',0
 txtHelp db 'INSTRUCCIONES',0

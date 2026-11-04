@@ -41,10 +41,10 @@ class DulcesTests(unittest.TestCase):
 
     def test_tablas_y_colores_interfaz(self):
         self.assertLessEqual(len(self.paleta), 256)
-        # RGB DAC originales: la ampliacion no cambia paneles, texto ni marcadores.
-        ui = [(0, 0, 0), (4, 6, 12), (8, 12, 20), (18, 24, 32), (58, 17, 20),
-              (17, 48, 30), (18, 32, 60), (42, 47, 54), (44, 23, 58), (63, 34, 12),
-              (27, 61, 41), (15, 51, 57), (60, 28, 44), (63, 23, 27), (63, 52, 22), (60, 62, 63)]
+        # Paleta aprobada Chocolate oscuro; conservar sus colores al regenerar assets.
+        ui = [(0, 0, 0), (7, 4, 3), (14, 8, 5), (29, 18, 11), (58, 17, 20),
+              (17, 48, 30), (18, 32, 60), (54, 46, 36), (44, 23, 58), (63, 34, 12),
+              (27, 61, 41), (15, 51, 57), (60, 28, 44), (63, 23, 27), (63, 52, 22), (63, 60, 53)]
         doc = json.loads((ROOT / "sprites" / "paleta.json").read_text())
         self.assertEqual([tuple(c["rgb"]) for c in doc["colores"][:16]], ui)
         palette_inc = (ROOT / "src" / "palette.inc").read_text()

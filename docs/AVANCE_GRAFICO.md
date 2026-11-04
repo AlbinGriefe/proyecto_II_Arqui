@@ -1,5 +1,7 @@
 # Estado del juego tras completar la interfaz
 
+**Apariencia aprobada:** Chocolate oscuro, opción 1 elegida por el usuario. Fondo, paneles y bordes usan tonos café; los textos secundarios y principales usan tonos crema. La selección se aplicó a `sprites/paleta.json` y a la tabla VGA de `src/palette.inc`; los PNG fuente y las tablas de píxeles de los dulces conservan sus datos. El integrador mantiene las 16 entradas de interfaz de la paleta activa al regenerar recursos.
+
 Se completó la parte funcional y gráfica de este avance. El informe de entrega, la bitácora final y la preparación de la defensa quedan para el cierre, por indicación del usuario.
 
 ## Cambios implementados y su motivo
@@ -40,4 +42,4 @@ Se generan 16 capturas ampliadas y cuatro GIF de comparación en `tmp/revision`.
 
 El acomodo de dos columnas de Fácil conserva los doce intentos y las zonas exigidas, pero adapta la maqueta del PDF; debe validarse con el docente. Se conserva la lectura de RF-05 que prohíbe repetidos en el secreto de Fácil y permite propuestas repetidas. El modo manual admite repetidos para las pruebas obligatorias.
 
-Los nombres de integrantes siguen pendientes en `txtTeam`, dentro de `src/data.asm`; no se inventaron datos. La carga de TXT durante la partida y los extras de sonido, cronómetro y puntajes no forman parte del cierre obligatorio implementado: el EXE utiliza sus tablas INC.
+Los créditos y la presentación incluyen Arwee Granados y Albin Greife, según los nombres confirmados por el usuario. Se definen en `txtTeam`, dentro de `src/data.asm`. La carga de TXT durante la partida y los extras de sonido, cronómetro y puntajes no forman parte del cierre obligatorio implementado: el EXE utiliza sus tablas INC.
